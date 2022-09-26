@@ -13,21 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.urls import include, re_path
 from django.contrib import admin
 from jobsapp import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
-    url(r'^punejobs/', views.punejobs),
-    url(r'^hydjobs/', views.hydjobs),
-    url(r'^chennaijobs/', views.chennaijobs),
-    url(r'^banglorejobs/', views.banglorejobs),
-    url(r'^register/', views.student_view),
-    url(r'^thankyou/', views.thankyou_view),
-    url(r'^studentlist/', views.list_student),
-    url(r'^signup/', views.signup_view),
-    url(r'^accounts/',include('django.contrib.auth.urls')),
-    url(r'^api/',include('jobsapp.api.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^$', views.index),
+    re_path(r'^punejobs/', views.punejobs),
+    re_path(r'^hydjobs/', views.hydjobs),
+    re_path(r'^chennaijobs/', views.chennaijobs),
+    re_path(r'^banglorejobs/', views.banglorejobs),
+    re_path(r'^register/', views.student_view),
+    re_path(r'^thankyou/', views.thankyou_view),
+    re_path(r'^studentlist/', views.list_student),
+    re_path(r'^signup/', views.signup_view),
+    re_path(r'^accounts/', include('django.contrib.auth.urls')),
+    re_path(r'^api/', include('jobsapp.api.urls')),
 ]
